@@ -48,7 +48,7 @@ namespace Tic_Tac_Toe {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            System.Console.WriteLine("TEST KIIRAS");
+            
 
             // TODO: Add your update logic here
             if (playerWon == 0) {
@@ -60,12 +60,14 @@ namespace Tic_Tac_Toe {
                             if (rectArray[i, j].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[i, j] == 0) {
                                 CircleXPostion[i, j] = 1; //eltároljuk a kör pozicióját
                                 isCircleNext = false;
+                                printGameStateArray();
                                 //System.Threading.Thread.Sleep(250);
                             }
                         } else {
                             if (rectArray[i, j].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[i, j] == 0) {
                                 CircleXPostion[i, j] = 2; //eltaroljuk az x poziciojat
                                 isCircleNext = true;
+                                printGameStateArray();
                                 //System.Threading.Thread.Sleep(250);
                             }
                         }
@@ -147,6 +149,16 @@ namespace Tic_Tac_Toe {
 
         private void DrawSingleRect(RectangleF[,] rectArray, Color color, int indexX, int indexY) {
             _spriteBatch.DrawRectangle(rectArray[indexX, indexY], color, lineThickness, 0);
+        }
+
+        private void printGameStateArray() {
+            for (int i = 0; i < CircleXPostion.GetLength(0); i++) {
+                for (int j = 0; j < CircleXPostion.GetLength(1); j++) {
+                    System.Console.Write(CircleXPostion[i,j] + " | ");
+                }
+                System.Console.WriteLine();
+            }
+            System.Console.WriteLine("\n\n");
         }
 
         private void CheckGameCondition() {
