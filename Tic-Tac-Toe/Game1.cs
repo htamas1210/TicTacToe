@@ -58,7 +58,7 @@ namespace Tic_Tac_Toe {
                         mouse = Mouse.GetState();
                         if (isCircleNext) {
                             if (rectArray[i, j].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[i, j] == 0) {
-                                CircleXPostion[i, j] = 1; //eltároljuk a kör pozicióját
+                                CircleXPostion[i, j] = 1; //eltároljuk a kör pozicióját ||| CHANGED FROM [i,j]
                                 isCircleNext = false;
                                 printGameStateArray();
                                 //System.Threading.Thread.Sleep(250);
