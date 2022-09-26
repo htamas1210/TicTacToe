@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using System;
 using System.Collections.Generic;
 
 namespace Tic_Tac_Toe {
@@ -16,7 +17,7 @@ namespace Tic_Tac_Toe {
         private List<string> X4PosList;  
         private int lineThickness = 5;
         private int playerWon = 0; //1 is circle 2 is x
-        private bool isCircleNext = false;
+        private bool isCircleNext = true; //basically start player here
 
         public Game1() {
             _graphics = new GraphicsDeviceManager(this);
@@ -60,8 +61,19 @@ namespace Tic_Tac_Toe {
                             if (rectArray[j, i].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[j, i] == 0) {
                                 CircleXPostion[j, i] = 1; //eltároljuk a kör pozicióját ||| CHANGED FROM [i,j]
                                 isCircleNext = false;
+
                                 printGameStateArray();
+
                                 //Put list stuff here
+                                Circle4PosList.Add(j+";"+i);
+                                if(Circle4PosList.Count == 4) {
+                                    string[] index = Circle4PosList[0].Split(';');
+                                    CircleXPostion[Convert.ToInt32(index[0]), Convert.ToInt32(index[1])] = 0; //set indexed field to empty
+                                    Circle4PosList.RemoveAt(0);
+                                }
+                                //printing list
+                                printList(Circle4PosList);
+
                                 //System.Threading.Thread.Sleep(250);
                             }
                         } else {
@@ -69,7 +81,17 @@ namespace Tic_Tac_Toe {
                                 CircleXPostion[j, i] = 2; //eltaroljuk az x poziciojat
                                 isCircleNext = true;
                                 printGameStateArray();
+
                                 //Put list stuff here
+                                X4PosList.Add(j+";"+i);
+                                if (X4PosList.Count == 4) {
+                                    string[] index = X4PosList[0].Split(';');//(j;i)
+                                    CircleXPostion[Convert.ToInt32(index[0]), Convert.ToInt32(index[1])] = 0; //set indexed field to empty (j;i)
+                                    X4PosList.RemoveAt(0);
+                                }
+                                //printing list
+                                printList(X4PosList);
+
                                 //System.Threading.Thread.Sleep(250);
                             }
                         }
@@ -171,6 +193,12 @@ namespace Tic_Tac_Toe {
             System.Console.WriteLine("\n");
         }
 
+        private void printList(List<string> list) {
+            foreach(var elem in list) {
+                System.Console.WriteLine(elem);
+            }
+        }
+
         private void CheckGameCondition() {
             //vertical
             //circle
@@ -240,7 +268,7 @@ namespace Tic_Tac_Toe {
                 //System.Console.WriteLine("ii: " + i + "" + i);
                 if (CircleXPostion[i, i] == 1) {
                     count2++;
-                    System.Console.WriteLine(count2 + "  kor");
+                    //System.Console.WriteLine(count2 + "  kor");
                 }
                 
                 if (count2 == 3) {
@@ -256,7 +284,7 @@ namespace Tic_Tac_Toe {
                 //System.Console.WriteLine("ii: " + i + "" + i);
                 if (CircleXPostion[i, i] == 2) {
                     count3++;
-                    System.Console.WriteLine(count3 + "  X");
+                    //System.Console.WriteLine(count3 + "  X");
                 }
 
                 if (count3 == 3) {
