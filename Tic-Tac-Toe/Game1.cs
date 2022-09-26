@@ -2,14 +2,18 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
+using System.Collections.Generic;
 
 namespace Tic_Tac_Toe {
     public class Game1 : Game {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D Circle, X;
+        private Texture2D CircleWonTexture, XWonTexture;
         private RectangleF[,] rectArray;
         private int[,] CircleXPostion;
+        private List<string> Circle4PosList; //for storing the 4 latest positions
+        private List<string> X4PosList;  
         private int lineThickness = 5;
         private int playerWon = 0; //1 is circle 2 is x
         private bool isCircleNext = false;
@@ -21,8 +25,6 @@ namespace Tic_Tac_Toe {
         }
 
         protected override void Initialize() {
-            // TODO: Add your initialization logic here
-
             //Setting Resolution
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 600;
@@ -32,23 +34,23 @@ namespace Tic_Tac_Toe {
             rectArray = new RectangleF[3,3];
             CircleXPostion = new int[3, 3]; //0 is free space, 1 is circle, 2 is X
 
+            Circle4PosList = new List<string>();
+            X4PosList = new List<string>();
+
             base.Initialize();
         }
 
         protected override void LoadContent() {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             Circle = Content.Load<Texture2D>("Textures/circle");
             X = Content.Load<Texture2D>("Textures/X");
+            CircleWonTexture = Content.Load<Texture2D>("Textures/Circle win text");
+            XWonTexture = Content.Load<Texture2D>("Textures/Cross win text");
 
         }
 
         protected override void Update(GameTime gameTime) {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();            
-
-            // TODO: Add your update logic here
             if (playerWon == 0) {
                 var mouse = Mouse.GetState();
                 for (int i = 0; i < rectArray.GetLength(0); i++) {
@@ -59,6 +61,7 @@ namespace Tic_Tac_Toe {
                                 CircleXPostion[j, i] = 1; //eltároljuk a kör pozicióját ||| CHANGED FROM [i,j]
                                 isCircleNext = false;
                                 printGameStateArray();
+                                //Put list stuff here
                                 //System.Threading.Thread.Sleep(250);
                             }
                         } else {
@@ -66,6 +69,7 @@ namespace Tic_Tac_Toe {
                                 CircleXPostion[j, i] = 2; //eltaroljuk az x poziciojat
                                 isCircleNext = true;
                                 printGameStateArray();
+                                //Put list stuff here
                                 //System.Threading.Thread.Sleep(250);
                             }
                         }
@@ -81,9 +85,16 @@ namespace Tic_Tac_Toe {
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.CadetBlue);
 
-            // TODO: Add your drawing code here
             var mouse = Mouse.GetState();
             _spriteBatch.Begin();
+
+            if(playerWon == 1) {
+                _spriteBatch.Draw(CircleWonTexture, new Rectangle(10, 0, 50, 600), Color.White);
+                _spriteBatch.Draw(CircleWonTexture, new Rectangle(_graphics.PreferredBackBufferWidth - 75, 0, 50, 600), Color.White);
+            }else if(playerWon == 2) {
+                _spriteBatch.Draw(XWonTexture, new Rectangle(10, 0, 50, 600), Color.White);
+                _spriteBatch.Draw(XWonTexture, new Rectangle(_graphics.PreferredBackBufferWidth - 75, 0, 50, 600), Color.White);
+            }
             
             DrawTicTacToeFieldRect(rectArray, Color.LightGray);
 
@@ -114,6 +125,7 @@ namespace Tic_Tac_Toe {
                 }
             }
 
+            //Testing one texture draw
             //loop through circle pos arr to draw the texture
             /*_spriteBatch.Draw(Circle, new Rectangle(100, 0, 200, 200), Color.White);
             _spriteBatch.Draw(X, new Rectangle(300, 0, 200, 200), Color.White);*/

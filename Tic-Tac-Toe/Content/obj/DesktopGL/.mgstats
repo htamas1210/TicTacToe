@@ -1,3 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/dev/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe/Content/Textures/circle.png","C:/dev/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe/Content/bin/DesktopGL/Textures/circle.xnb","TextureProcessor","Texture2DContent",6638,1354981,0,2338499
-"C:/dev/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe/Content/Textures/X.png","C:/dev/Tic-Tac-Toe/Tic-Tac-Toe/Tic-Tac-Toe/Content/bin/DesktopGL/Textures/X.xnb","TextureProcessor","Texture2DContent",6565,3841685,0,0947381
+"C:/dev/TicTacToe/Tic-Tac-Toe/Content/Textures/Circle win text.png","C:/dev/TicTacToe/Tic-Tac-Toe/Content/bin/DesktopGL/Textures/Circle win text.xnb","TextureProcessor","Texture2DContent",1751,140085,0,1433646
+"C:/dev/TicTacToe/Tic-Tac-Toe/Content/Textures/circle.png","C:/dev/TicTacToe/Tic-Tac-Toe/Content/bin/DesktopGL/Textures/circle.xnb","TextureProcessor","Texture2DContent",6638,1354981,0,0303196
+"C:/dev/TicTacToe/Tic-Tac-Toe/Content/Textures/Cross win text.png","C:/dev/TicTacToe/Tic-Tac-Toe/Content/bin/DesktopGL/Textures/Cross win text.xnb","TextureProcessor","Texture2DContent",1739,140085,0,0061203
+"C:/dev/TicTacToe/Tic-Tac-Toe/Content/Textures/X.png","C:/dev/TicTacToe/Tic-Tac-Toe/Content/bin/DesktopGL/Textures/X.xnb","TextureProcessor","Texture2DContent",6565,3841685,0,0896875
