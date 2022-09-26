@@ -46,9 +46,7 @@ namespace Tic_Tac_Toe {
 
         protected override void Update(GameTime gameTime) {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            
+                Exit();            
 
             // TODO: Add your update logic here
             if (playerWon == 0) {
@@ -57,15 +55,15 @@ namespace Tic_Tac_Toe {
                     for (int j = 0; j < rectArray.GetLength(1); j++) {
                         mouse = Mouse.GetState();
                         if (isCircleNext) {
-                            if (rectArray[i, j].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[i, j] == 0) {
-                                CircleXPostion[i, j] = 1; //eltároljuk a kör pozicióját ||| CHANGED FROM [i,j]
+                            if (rectArray[j, i].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[j, i] == 0) {
+                                CircleXPostion[j, i] = 1; //eltároljuk a kör pozicióját ||| CHANGED FROM [i,j]
                                 isCircleNext = false;
                                 printGameStateArray();
                                 //System.Threading.Thread.Sleep(250);
                             }
                         } else {
-                            if (rectArray[i, j].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[i, j] == 0) {
-                                CircleXPostion[i, j] = 2; //eltaroljuk az x poziciojat
+                            if (rectArray[j, i].Contains(new Point(mouse.X, mouse.Y)) && mouse.LeftButton == ButtonState.Pressed && CircleXPostion[j, i] == 0) {
+                                CircleXPostion[j, i] = 2; //eltaroljuk az x poziciojat
                                 isCircleNext = true;
                                 printGameStateArray();
                                 //System.Threading.Thread.Sleep(250);
@@ -154,11 +152,11 @@ namespace Tic_Tac_Toe {
         private void printGameStateArray() {
             for (int i = 0; i < CircleXPostion.GetLength(0); i++) {
                 for (int j = 0; j < CircleXPostion.GetLength(1); j++) {
-                    System.Console.Write(CircleXPostion[i,j] + " | ");
+                    System.Console.Write(CircleXPostion[j,i] +"(j:"+j+", i:"+i + ") | ");
                 }
                 System.Console.WriteLine();
             }
-            System.Console.WriteLine("\n\n");
+            System.Console.WriteLine("\n");
         }
 
         private void CheckGameCondition() {
@@ -212,6 +210,7 @@ namespace Tic_Tac_Toe {
                 for (int j = 0; j < CircleXPostion.GetLength(1); j++) {
                     if (CircleXPostion[j, i] == 2) {
                         count++;
+                        //System.Console.WriteLine(count);
                     }
                 }
                 if (count == 3) {
@@ -223,27 +222,32 @@ namespace Tic_Tac_Toe {
 
             //diagonal
             //circle
+            int count2 = 0;
             for (int i = 0; i < CircleXPostion.GetLength(0); i++) {
-                int count = 0;
+                
+                //System.Console.WriteLine("ii: " + i + "" + i);
                 if (CircleXPostion[i, i] == 1) {
-                    count++;
+                    count2++;
+                    System.Console.WriteLine(count2 + "  kor");
                 }
                 
-                if (count == 3) {
-                    playerWon = 1;
-                    
+                if (count2 == 3) {
+                    playerWon = 1;               
                     return;
                 }
             }
 
             //x
+            int count3 = 0;
             for (int i = 0; i < CircleXPostion.GetLength(0); i++) {
-                int count = 0;
+                
+                //System.Console.WriteLine("ii: " + i + "" + i);
                 if (CircleXPostion[i, i] == 2) {
-                    count++;
+                    count3++;
+                    System.Console.WriteLine(count3 + "  X");
                 }
 
-                if (count == 3) {
+                if (count3 == 3) {
                     playerWon = 2;
                     return;
                 }
