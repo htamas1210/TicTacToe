@@ -27,7 +27,9 @@ C:\dev\Tic-Tac-Toe\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\cir
 C:\dev\Tic-Tac-Toe\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\X.xnb
 C:\dev\Tic-Tac-Toe\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net6.0\MonoGame.Extended.dll
 C:\dev\Tic-Tac-Toe\Tic-Tac-Toe\Tic-Tac-Toe\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\Circle win text.xnb
 C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\circle.xnb
+C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\Cross win text.xnb
 C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\X.xnb
 C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Tic-Tac-Toe.exe
 C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Tic-Tac-Toe.deps.json
@@ -56,5 +58,3 @@ C:\dev\TicTacToe\Tic-Tac-Toe\obj\Debug\net6.0\refint\Tic-Tac-Toe.dll
 C:\dev\TicTacToe\Tic-Tac-Toe\obj\Debug\net6.0\Tic-Tac-Toe.pdb
 C:\dev\TicTacToe\Tic-Tac-Toe\obj\Debug\net6.0\Tic-Tac-Toe.genruntimeconfig.cache
 C:\dev\TicTacToe\Tic-Tac-Toe\obj\Debug\net6.0\ref\Tic-Tac-Toe.dll
-C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\Circle win text.xnb
-C:\dev\TicTacToe\Tic-Tac-Toe\bin\Debug\net6.0\Content\Textures\Cross win text.xnb

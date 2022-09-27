@@ -17,7 +17,7 @@ namespace Tic_Tac_Toe {
         private List<string> X4PosList;  
         private int lineThickness = 5;
         private int playerWon = 0; //1 is circle 2 is x
-        private bool isCircleNext = true; //basically start player here
+        private bool isCircleNext = false; //basically start player here
 
         public Game1() {
             _graphics = new GraphicsDeviceManager(this);
@@ -294,6 +294,15 @@ namespace Tic_Tac_Toe {
             }
 
             //reverse diagonal
+            //circle
+            if (CircleXPostion[0,2] == 1 && CircleXPostion[1,1] == 1 && CircleXPostion[2,0] == 1) {
+                playerWon = 1;
+                return;
+            }else if(CircleXPostion[0, 2] == 2 && CircleXPostion[1, 1] == 2 && CircleXPostion[2, 0] == 2) {
+                playerWon = 2;
+                return;
+            }
+
         }
     }
 }
